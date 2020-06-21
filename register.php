@@ -1,4 +1,36 @@
+<?php
 
+include 'database.php';
+error_reporting(0);
+session_start();
+
+if(isset($_POST['submit'])){
+
+    extract($_POST);
+
+    if($pass==$cpass){
+    $select = mysqli_query($conn, "SELECT * from users where email= '$email' ");
+    $num = mysqli_num_rows($select);
+
+    if($num==0){
+       
+        $target_path = "";  
+        $target_path = $target_path.basename( $_FILES['fileToUpload']['name']);   
+        $insert = mysqli_query($conn, "INSERT into users(name,email,password,mobile,image) VALUES('$name','$email','$pass','$mobile','$target_path')");
+        if(move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_path)) {  
+            echo "File uploaded successfully!";  
+            echo "<img src=".$target_path.">";
+        } else{  
+            echo "Sorry, file not uploaded, please try again!";  
+        }  
+    }
+    else{
+        $error_message = "Email Address already exist ! Please Sign Up!";
+    }
+}
+}
+
+?>
 
 <html>
     <head>
