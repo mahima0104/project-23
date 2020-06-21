@@ -1,4 +1,17 @@
+<?php
 
+include 'database.php';
+error_reporting(0);
+session_start();
+
+$email = $_SESSION['email'];
+$name =$_SESSION['name'];
+
+if($_SESSION['flag']==true){
+
+$select = mysqli_query($conn, "SELECT * from users where status = 'online' ");
+
+?>
 
 <html>
     <head>
