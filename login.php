@@ -51,7 +51,7 @@ if(isset($_POST['submit'])){
             <label for="exampleInputPassword1">Password</label>
             <input type="password" class="form-control" id="exampleInputPassword1" style="width:20%" name="pass">
         </div>
-        <button type="submit" class="btn btn-primary" name="submit">Submit</button><br>
+        <button type="submit" class="btn btn-primary" name="submit">Submit</button><br> 
         <br><h5>Not a User!</h5>
         <a href="register.php">Register Here!</a>
         </form>
